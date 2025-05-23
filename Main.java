@@ -19,13 +19,15 @@ public class Main {
         // This is the main method where the program starts executing
         // It will include a menu for the user to select the type of conversion they want
         // and then prompt them for the necessary inputs.
-        double[] conversionUnits = {1, 0.0254, 0.3048};
+        double[] conversionUnits = {1, 0.0254, 0.3048, 0.9144, 1609.34};
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please select from below what information you would like to convert?");
         System.out.println("1 - meters");
         System.out.println("2 - inches");
         System.out.println("3 - feet");
+        System.out.println("4 - yards");
+        System.out.println("5 - miles");
         // put more in later
 
         System.out.println("Please enter first the unit you would like to convert from and then the unit you would like to convert to");
