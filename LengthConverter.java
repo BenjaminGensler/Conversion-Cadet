@@ -1,5 +1,5 @@
-public class LengthConverter {
-    private String[] units = {
+public class LengthConverter implements Converter {
+    public String[] units = {
         "meters",
         "inches", 
         "feet", 
@@ -13,6 +13,10 @@ public class LengthConverter {
         0.9144, 
         1609.34
     };
+
+    public String[] getUnits() {
+        return units;
+    }
 
     public double convert(double value, int fromUnit, int toUnit) {
         double valueInMeters = value * conversionFactors[fromUnit];

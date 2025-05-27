@@ -29,22 +29,30 @@ public class Main {
         // Future options can be added here for other types of conversions
         int choice = scanner.nextInt();
 
-        // Calling the conversion class to perform the conversion
-        LengthConverter converter = new LengthConverter();
+        Converter converter = null; // Initialize converter to null so it can be assigned later
+        
+        if (choice == 1) {
+            converter = new LengthConverter();
+        } else if (choice == 2) {
+            converter = new WeightConverter();
+        } else {
+            System.out.println("Invalid choice. Please restart the program and select a valid option.");
+        }
+
+        // collects given units from converter
+        String[] units = converter.getUnits();
 
         System.out.println("Please select from below what information you would like to convert?");
-        System.out.println("1 - meters");
-        System.out.println("2 - inches");
-        System.out.println("3 - feet");
-        System.out.println("4 - yards");
-        System.out.println("5 - miles");
-        // put more in later
+        for(int i = 0; i < units.length; i++) {
+            System.out.println((i + 1) + " - " + units[i]);
+        }
 
-        System.out.println("Please enter first the unit you would like to convert from and then the unit you would like to convert to");
+        System.out.println("Please enter the unit you would like to convert from:");
         int var1 = scanner.nextInt() - 1;
+        System.out.println("Please enter the unit you would like to convert to:");
         int var2 = scanner.nextInt() - 1;
 
-        System.out.println("Please enter the number of" + var1 + " you would like to convert");
+        System.out.println("Please enter the number of" + units[var1] + " you would like to convert");
         double num = scanner.nextDouble();
 
         // Deciding on how best to convert the given metric

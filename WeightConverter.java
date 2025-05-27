@@ -1,5 +1,5 @@
-public class WeightConverter {
-    private String[] units = {
+public class WeightConverter implements Converter {
+    public String[] units = {
         "grams (g)",
         // "Metric tons (t)", 
         "Pounds (lb)", 
@@ -11,6 +11,10 @@ public class WeightConverter {
         453.592, 
         28.3495
     };
+
+    public String[] getUnits() {
+        return units;
+    }
 
     public double convert(double value, int fromUnit, int toUnit) {
         double valueInMeters = value * conversionFactors[fromUnit];
