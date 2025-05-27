@@ -19,8 +19,18 @@ public class Main {
         // This is the main method where the program starts executing
         // It will include a menu for the user to select the type of conversion they want
         // and then prompt them for the necessary inputs.
-        double[] conversionUnits = {1, 0.0254, 0.3048, 0.9144, 1609.34};
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Universal Converter!");
+        System.out.println("This program will allow you to convert between various units of length.");
+        System.out.println("Please select the type of conversion you would like to perform:");
+        System.out.println("1 - Length");
+        System.out.println("2 - Weight");
+        // Future options can be added here for other types of conversions
+        int choice = scanner.nextInt();
+
+        // Calling the conversion class to perform the conversion
+        LengthConverter converter = new LengthConverter();
 
         System.out.println("Please select from below what information you would like to convert?");
         System.out.println("1 - meters");
@@ -36,9 +46,6 @@ public class Main {
 
         System.out.println("Please enter the number of" + var1 + " you would like to convert");
         double num = scanner.nextDouble();
-
-        // Calling the conversion class to perform the conversion
-        LengthConverter converter = new LengthConverter();
 
         // Deciding on how best to convert the given metric
         double convertedNum = converter.convert(num, var1, var2);
