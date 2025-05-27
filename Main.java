@@ -31,14 +31,17 @@ public class Main {
         // put more in later
 
         System.out.println("Please enter first the unit you would like to convert from and then the unit you would like to convert to");
-        double var1 = scanner.nextDouble() - 1;
-        double var2 = scanner.nextDouble() - 1;
+        int var1 = scanner.nextInt() - 1;
+        int var2 = scanner.nextInt() - 1;
 
         System.out.println("Please enter the number of" + var1 + " you would like to convert");
         double num = scanner.nextDouble();
 
+        // Calling the conversion class to perform the conversion
+        LengthConverter converter = new LengthConverter();
+
         // Deciding on how best to convert the given metric
-        double convertedNum = num * conversionUnits[(int) var1] / conversionUnits[(int) var2];
+        double convertedNum = converter.convert(num, var1, var2);
 
         System.out.println("The converted number is: " + convertedNum);
 
