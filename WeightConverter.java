@@ -6,10 +6,10 @@ public class WeightConverter implements Converter {
         "ounces (oz)"
     };
     private double[] conversionFactors = {
-        1.0, 
-        // 1e+6,
-        453.592, 
-        28.3495
+        1.0,        // grams
+        // 1e+6,    // Metric tons
+        453.592,    // pounds
+        28.3495     // ounces
     };
 
     public String[] getUnits() {
