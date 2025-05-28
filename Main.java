@@ -26,6 +26,8 @@ public class Main {
         System.out.println("Please select the type of conversion you would like to perform:");
         System.out.println("1 - Length");
         System.out.println("2 - Weight");
+        System.out.println("3 - Temperature");
+        System.out.println("4 - Time");
         // Future options can be added here for other types of conversions
         int choice = scanner.nextInt();
 
@@ -35,8 +37,14 @@ public class Main {
             converter = new LengthConverter();
         } else if (choice == 2) {
             converter = new WeightConverter();
+        } else if (choice == 3) {
+            converter = new TemperatureConverter();
+        } else if (choice == 4) {
+            converter = new TimeConverter();
         } else {
             System.out.println("Invalid choice. Please restart the program and select a valid option.");
+            scanner.close();
+            return; // Exit the program if an invalid choice is made
         }
 
         // collects given units from converter
