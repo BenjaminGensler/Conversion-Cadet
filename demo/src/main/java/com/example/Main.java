@@ -1,3 +1,4 @@
+package com.example;
 // Java program for conversions (Universal Converter)
 // This program allows users to convert between various units of length.
 // -------------------------------------------------------------------
@@ -13,6 +14,12 @@
 // 1. Length
 
 import java.util.Scanner;
+
+import com.example.Converter;
+import com.example.LengthConverter;
+import com.example.TemperatureConverter;
+import com.example.TimeConverter;
+import com.example.WeightConverter;
 
 public class Main {
     public static void main(String[] args) {

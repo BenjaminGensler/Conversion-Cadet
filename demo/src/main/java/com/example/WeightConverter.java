@@ -1,3 +1,4 @@
+package com.example;
 public class WeightConverter implements Converter {
     public String[] units = {
         "grams (g)",

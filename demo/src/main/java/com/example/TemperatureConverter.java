@@ -1,3 +1,4 @@
+package com.example;
 public class TemperatureConverter implements Converter {
     public String[] units = {
         "Celsius (°C)",
