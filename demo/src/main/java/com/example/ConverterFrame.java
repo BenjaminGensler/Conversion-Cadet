@@ -4,20 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ConverterFrame extends JFrame {
-    public ConverterFrame(){
-        setTitle("Conversion Cadet"); // text for title
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // app quits when window is closed
-        setLayout(new FlowLayout()); //standard left to right with wrap layout
+    public ConverterFrame() {
+        setTitle("Conversion Cadet");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
 
-        //Creating Combo Box for initial options (Length, Weight, Temperature, Time)
-        JComboBox<String> categoryBox = new JComboBox<>(new String[] {
-                "Length", "Weight", "Temperature", "Time"
-        });
+        // build the tabbed pane and its four tabs here, in the constructor
+        JTabbedPane tabs = new JTabbedPane();
+        tabs.addTab("Length", new ConverterPanel(new LengthConverter()));
+        tabs.addTab("Weight", new ConverterPanel(new WeightConverter()));
+        tabs.addTab("Temperature", new ConverterPanel(new TemperatureConverter()));
+        tabs.addTab("Time", new ConverterPanel(new TimeConverter()));
+        add(tabs);
 
-        //Adding categoryBox to frame
-        add(categoryBox);
-
-        pack(); //sizes the window to fit content automatically
+        pack();
         setVisible(true);
     }
 
