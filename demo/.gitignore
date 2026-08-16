@@ -1,0 +1,4 @@
+target/
+*.dmg
+.idea/
+*.iml

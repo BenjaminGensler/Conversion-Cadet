@@ -17,7 +17,7 @@ public class ConverterFrame extends JFrame {
         tabs.addTab("Time", new ConverterPanel(new TimeConverter()));
         add(tabs);
 
-        pack();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
 
