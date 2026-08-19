@@ -17,6 +17,8 @@ public class ConverterFrame extends JFrame {
         tabs.addTab("Time", new ConverterPanel(new TimeConverter()));
         add(tabs);
 
+        getContentPane().setBackground(new Color(0x123456));
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
