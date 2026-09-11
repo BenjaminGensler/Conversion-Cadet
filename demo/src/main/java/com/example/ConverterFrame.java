@@ -21,6 +21,14 @@ public class ConverterFrame extends JFrame {
         String[] categories = {"Length", "Weight", "Temperature", "Time"};
         JList<String> categoryList = new JList<>(categories); // simplest way to hand JList its items directly
 
+        // Category List Design
+        categoryList.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        categoryList.setFixedCellHeight(40);
+        categoryList.setBackground(new Color(230, 230, 235));
+        categoryList.setForeground(Color.DARK_GRAY);
+        categoryList.setSelectionBackground(new Color(38, 158, 72));
+        categoryList.setSelectionForeground(Color.WHITE);
+
         categoryList.setSelectedIndex(0); // Temporary: Plan to make it the same panel that was last visited in the previous session ----
 
         // fires whenever the selection changes
@@ -31,7 +39,10 @@ public class ConverterFrame extends JFrame {
             }
         });
 
-        add(new JScrollPane(categoryList), BorderLayout.WEST); // JList is almost always wrapped in a JScrollPane
+        JScrollPane sidebarScrollPane = new JScrollPane(categoryList);
+        sidebarScrollPane.setPreferredSize(new Dimension(150, 0));
+        add(sidebarScrollPane, BorderLayout.WEST);
+
         add(contentPanel, BorderLayout.CENTER);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -39,6 +50,14 @@ public class ConverterFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+        // add Nimbus fix for JComboBox to avoid MacOS's native Aqua rendering (ignoring setBackground)
+        try {
+            UIManager.setLookAndFeel(new javax.swing.plaf.nimbus.NimbusLookAndFeel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         SwingUtilities.invokeLater(() -> new ConverterFrame());
+
     }
 }
