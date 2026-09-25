@@ -1,6 +1,7 @@
 package com.example;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class ConverterPanel extends JPanel {
@@ -54,8 +55,30 @@ public class ConverterPanel extends JPanel {
         JPanel resultRow = new JPanel();
         resultRow.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton convertButton = new JButton("Convert");
+        JButton convertButton = new JButton("Convert") {
+            @Override
+            protected void paintComponent(Graphics g) {
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); // smooths the curve edges
+                g2.setColor(getBackground());
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20); // last two numbers control corner roundness
+                g2.dispose();
+                super.paintComponent(g);
+            }
+        };
+        convertButton.setContentAreaFilled(false); // stops Swing's default square background from painting underneath your rounded one
+        convertButton.setBorderPainted(false);
+        convertButton.setFocusPainted(false);
+        convertButton.setOpaque(false);
+        convertButton.setBackground(new Color(51, 159, 35));
+        convertButton.setForeground(Color.WHITE);
+        convertButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         convertButton.setFont(largerFont);
+        convertButton.setPreferredSize(new Dimension(100, 50));
+
+        Border lineBorder = BorderFactory.createLineBorder(Color.black);
+
+        convertButton.setBorder(lineBorder);
         JLabel resultLabel = new JLabel("Result: ");
         resultLabel.setFont(largerFont);
 
@@ -74,17 +97,20 @@ public class ConverterPanel extends JPanel {
             }
         });
 
+        add(Box.createVerticalGlue());
         add(fromRow);
         add(arrowLabel);
         add(toRow);
         add(resultRow);
+        add(Box.createVerticalGlue());
     }
 
-    // font is now a parameter too, so every combo box picks up the same larger font as everything else
     private void styleComboBox(JComboBox<String> box, Font font) {
         box.setPreferredSize(new Dimension(150, 60));
         box.setBackground(new Color(51, 159, 35));
-        box.setForeground(new Color(255, 255, 230));
+        box.setForeground(Color.WHITE);
         box.setFont(font);
+        box.setFocusable(false);
+        box.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10)); // just padding, no visible line at all
     }
 }
